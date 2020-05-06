@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AppCardTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-05-06T14:51:02" hostname="MBP-Anton" time="11.35">
+<testsuite name="AppCardTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-05-06T15:15:19" hostname="MBP-Anton" time="13.574">
   <properties/>
-  <testcase name="shouldSubmitWithoutCheckbox()" classname="AppCardTest" time="3.857"/>
-  <testcase name="shouldSubmitWithIncorrectCity()" classname="AppCardTest" time="1.18"/>
-  <testcase name="shouldSubmitWithIncorrectDate()" classname="AppCardTest" time="1.262"/>
-  <testcase name="shouldSubmitWithIncorrectName()" classname="AppCardTest" time="1.138"/>
-  <testcase name="shouldSubmitRequest()" classname="AppCardTest" time="1.153"/>
-  <testcase name="shouldSubmitRequestWithoutDate()" classname="AppCardTest" time="0.827"/>
-  <testcase name="shouldSubmitWithoutName()" classname="AppCardTest" time="0.963"/>
-  <testcase name="shouldSubmitWithoutNumber()" classname="AppCardTest" time="0.967"/>
+  <testcase name="shouldSubmitWithoutCheckbox()" classname="AppCardTest" time="3.952"/>
+  <testcase name="shouldSubmitWithIncorrectCity()" classname="AppCardTest" time="1.227"/>
+  <testcase name="shouldSubmitWithIncorrectDate()" classname="AppCardTest" time="1.21"/>
+  <testcase name="shouldSubmitWithIncorrectName()" classname="AppCardTest" time="1.119"/>
+  <testcase name="shouldSubmitRequest()" classname="AppCardTest" time="2.925"/>
+  <testcase name="shouldSubmitRequestWithoutDate()" classname="AppCardTest" time="1.149"/>
+  <testcase name="shouldSubmitWithoutName()" classname="AppCardTest" time="0.985"/>
+  <testcase name="shouldSubmitWithoutNumber()" classname="AppCardTest" time="1.005"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[мая 06, 2020 5:51:02 PM com.codeborne.selenide.drivercommands.LazyDriver getAndCheckWebDriver
+  <system-err><![CDATA[мая 06, 2020 6:15:19 PM com.codeborne.selenide.drivercommands.LazyDriver getAndCheckWebDriver
 INFO: No webdriver is bound to current thread: 13 - let's create a new webdriver
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-Starting ChromeDriver 81.0.4044.69 (6813546031a4bc83f717a2ef7cd4ac6ec1199132-refs/branch-heads/4044@{#776}) on port 17625
+Starting ChromeDriver 81.0.4044.69 (6813546031a4bc83f717a2ef7cd4ac6ec1199132-refs/branch-heads/4044@{#776}) on port 15490
 Only local connections are allowed.
 Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
-мая 06, 2020 5:51:04 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+мая 06, 2020 6:15:21 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
-мая 06, 2020 5:51:04 PM com.codeborne.selenide.webdriver.BrowserResizer adjustBrowserSize
+мая 06, 2020 6:15:21 PM com.codeborne.selenide.webdriver.BrowserResizer adjustBrowserSize
 INFO: Set browser size to 1366x768
-мая 06, 2020 5:51:04 PM com.codeborne.selenide.webdriver.WebDriverFactory logBrowserVersion
+мая 06, 2020 6:15:21 PM com.codeborne.selenide.webdriver.WebDriverFactory logBrowserVersion
 INFO: BrowserName=chrome Version=81.0.4044.129 Platform=MAC
-мая 06, 2020 5:51:04 PM com.codeborne.selenide.webdriver.WebDriverFactory createWebDriver
+мая 06, 2020 6:15:21 PM com.codeborne.selenide.webdriver.WebDriverFactory createWebDriver
 INFO: Selenide v. 5.3.1
-мая 06, 2020 5:51:04 PM com.codeborne.selenide.webdriver.WebDriverFactory logSeleniumInfo
+мая 06, 2020 6:15:21 PM com.codeborne.selenide.webdriver.WebDriverFactory logSeleniumInfo
 INFO: Selenium WebDriver v. 3.141.59 build time: 2018-11-14T08:17:03
-мая 06, 2020 5:51:04 PM com.codeborne.selenide.drivercommands.CreateDriverCommand createDriver
-INFO: Create webdriver in current thread 13: ChromeDriver -> ChromeDriver: chrome on MAC (79bc4c678c2acd6bd8b19a18c3f1c3ba)
-[1588776664.975][SEVERE]: Timed out receiving message from renderer: 0.100
+мая 06, 2020 6:15:21 PM com.codeborne.selenide.drivercommands.CreateDriverCommand createDriver
+INFO: Create webdriver in current thread 13: ChromeDriver -> ChromeDriver: chrome on MAC (7112d3a82cef840124ccb6236b6b44aa)
+[1588778121.690][SEVERE]: Timed out receiving message from renderer: 0.100
 ]]></system-err>
 </testsuite>

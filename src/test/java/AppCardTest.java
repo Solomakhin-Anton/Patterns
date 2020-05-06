@@ -13,16 +13,31 @@ public class AppCardTest {
     void Setup() {
         open("http://localhost:9999");
     }
-
+    
     @Test
     void shouldSubmitRequest() {
+        String name = dataGenerator.makeName();
+        String phone = dataGenerator.makePhone();
+        String city = dataGenerator.makeCity();
+
         SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
-        form.$("[placeholder='Город']").setValue(dataGenerator.makeCity());
-        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardShiftDate(3));
-        form.$("[name=name]").setValue(dataGenerator.makeName());
-        form.$("[name=phone]").setValue(dataGenerator.makePhone());
+        form.$("[placeholder='Город']").setValue(city);
+        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
+        form.$("[name=name]").setValue(name);
+        form.$("[name=phone]").setValue(phone);
         form.$(".checkbox__box").click();
         $$(".button__content").find(exactText("Запланировать")).click();
+        $(withText("Успешно")).shouldBe(visible);
+
+        open("http://localhost:9999");
+        form.$("[placeholder='Город']").setValue(city);
+        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(4));
+        form.$("[name=name]").setValue(name);
+        form.$("[name=phone]").setValue(phone);
+        form.$(".checkbox__box").click();
+        $$(".button__content").find(exactText("Запланировать")).click();
+        $(withText("У вас уже запланирована встреча на другую дату. Перепланировать?")).shouldBe(visible);
+        $$(".button__content").find(exactText("Перепланировать")).click();
         $(withText("Успешно")).shouldBe(visible);
     }
 
@@ -30,7 +45,7 @@ public class AppCardTest {
     void shouldSubmitWithIncorrectCity() {
         SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
         form.$("[placeholder='Город']").setValue("Даллас");
-        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardShiftDate(3));
+        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=name]").setValue(dataGenerator.makeName());
         form.$("[name=phone]").setValue(dataGenerator.makePhone());
         form.$(".checkbox__box").click();
@@ -54,7 +69,7 @@ public class AppCardTest {
     void shouldSubmitWithIncorrectDate() {
         SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
         form.$("[placeholder='Город']").setValue(dataGenerator.makeCity());
-        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardShiftDate(1));
+        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(1));
         form.$("[name=name]").setValue(dataGenerator.makeName());
         form.$("[name=phone]").setValue(dataGenerator.makePhone());
         form.$(".checkbox__box").click();
@@ -67,7 +82,7 @@ public class AppCardTest {
     void shouldSubmitWithoutName() {
         SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
         form.$("[placeholder='Город']").setValue(dataGenerator.makeCity());
-        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardShiftDate(3));
+        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=phone]").setValue(dataGenerator.makePhone());
         form.$(".checkbox__box").click();
         $$(".button__content").find(exactText("Запланировать")).click();
@@ -79,7 +94,7 @@ public class AppCardTest {
     void shouldSubmitWithIncorrectName() {
         SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
         form.$("[placeholder='Город']").setValue(dataGenerator.makeCity());
-        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardShiftDate(3));
+        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=name]").setValue("Name Surname");
         form.$("[name=phone]").setValue(dataGenerator.makePhone());
         form.$(".checkbox__box").click();
@@ -92,7 +107,7 @@ public class AppCardTest {
     void shouldSubmitWithoutNumber() {
         SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
         form.$("[placeholder='Город']").setValue(dataGenerator.makeCity());
-        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardShiftDate(3));
+        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=name]").setValue(dataGenerator.makeName());
         form.$(".checkbox__box").click();
         $$(".button__content").find(exactText("Запланировать")).click();
@@ -117,7 +132,7 @@ public class AppCardTest {
     void shouldSubmitWithoutCheckbox() {
         SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
         form.$("[placeholder='Город']").setValue(dataGenerator.makeCity());
-        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardShiftDate(3));
+        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=name]").setValue(dataGenerator.makeName());
         form.$("[name=phone]").setValue(dataGenerator.makePhone());
         $$(".button__content").find(exactText("Запланировать")).click();
