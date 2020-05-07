@@ -29,7 +29,7 @@ public class AppCardTest {
         form.$("[name=name]").setValue(name);
         form.$("[name=phone]").setValue(phone);
         form.$(".checkbox__box").click();
-        $$(".button__content").find(exactText("Запланировать")).click();
+        $(".button__text").click();
         $(withText("Успешно")).shouldBe(visible);
 
         open("http://localhost:9999");
@@ -38,9 +38,9 @@ public class AppCardTest {
         form.$("[name=name]").setValue(name);
         form.$("[name=phone]").setValue(phone);
         form.$(".checkbox__box").click();
-        $$(".button__content").find(exactText("Запланировать")).click();
+        $(".button__text").click();
         $(withText("У вас уже запланирована встреча на другую дату. Перепланировать?")).shouldBe(visible);
-        $$(".button__content").find(exactText("Перепланировать")).click();
+        $("[data-test-id=replan-notification] button.button").click();
         $(withText("Успешно")).shouldBe(visible);
     }
 
@@ -51,7 +51,7 @@ public class AppCardTest {
         form.$("[name=name]").setValue(dataGenerator.makeName());
         form.$("[name=phone]").setValue(dataGenerator.makePhone());
         form.$(".checkbox__box").click();
-        $$(".button__content").find(exactText("Запланировать")).click();
+        $(".button__text").click();
         form.$(".input_theme_alfa-on-white.input_invalid .input__sub")
                 .shouldHave(exactText("Доставка в выбранный город недоступна"));
     }
@@ -63,7 +63,7 @@ public class AppCardTest {
         $("[name=name]").setValue(dataGenerator.makeName());
         $("[name=phone]").setValue(dataGenerator.makePhone());
         $(".checkbox__box").click();
-        $$(".button__content").find(exactText("Запланировать")).click();
+        $(".button__text").click();
         $(withText("Успешно")).shouldBe(visible);
     }
 
@@ -74,7 +74,7 @@ public class AppCardTest {
         form.$("[name=name]").setValue(dataGenerator.makeName());
         form.$("[name=phone]").setValue(dataGenerator.makePhone());
         form.$(".checkbox__box").click();
-        $$(".button__content").find(exactText("Запланировать")).click();
+        $(".button__text").click();
         form.$(".input_theme_alfa-on-white.input_invalid .input__sub")
                 .shouldHave(exactText("Заказ на выбранную дату невозможен"));
     }
@@ -85,7 +85,7 @@ public class AppCardTest {
         form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=phone]").setValue(dataGenerator.makePhone());
         form.$(".checkbox__box").click();
-        $$(".button__content").find(exactText("Запланировать")).click();
+        $(".button__text").click();
         form.$(".input_theme_alfa-on-white.input_invalid .input__sub")
                 .shouldHave(exactText("Поле обязательно для заполнения"));
     }
@@ -97,7 +97,7 @@ public class AppCardTest {
         form.$("[name=name]").setValue("Name Surname");
         form.$("[name=phone]").setValue(dataGenerator.makePhone());
         form.$(".checkbox__box").click();
-        $$(".button__content").find(exactText("Запланировать")).click();
+        $(".button__text").click();
         form.$(".input_theme_alfa-on-white.input_invalid .input__sub")
                 .shouldHave(exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
@@ -108,7 +108,7 @@ public class AppCardTest {
         form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=name]").setValue(dataGenerator.makeName());
         form.$(".checkbox__box").click();
-        $$(".button__content").find(exactText("Запланировать")).click();
+        $(".button__text").click();
         form.$(".input_theme_alfa-on-white.input_invalid .input__sub")
                 .shouldHave(exactText("Поле обязательно для заполнения"));
     }
@@ -119,7 +119,7 @@ public class AppCardTest {
         form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=name]").setValue(dataGenerator.makeName());
         form.$("[name=phone]").setValue(dataGenerator.makePhone());
-        $$(".button__content").find(exactText("Запланировать")).click();
+        $(".button__text").click();
         form.$(".input_invalid")
                 .shouldHave(exactText("Я соглашаюсь с условиями обработки и использования моих персональных данных"));
     }
