@@ -1,3 +1,5 @@
+package ru.netology.delivery;
+
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,19 +10,20 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class AppCardTest {
     DataGenerator dataGenerator = new DataGenerator();
+    SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
+
 
     @BeforeEach
     void Setup() {
         open("http://localhost:9999");
     }
-    
+
     @Test
     void shouldSubmitRequest() {
         String name = dataGenerator.makeName();
         String phone = dataGenerator.makePhone();
         String city = dataGenerator.makeCity();
 
-        SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
         form.$("[placeholder='Город']").setValue(city);
         form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=name]").setValue(name);
@@ -43,7 +46,6 @@ public class AppCardTest {
 
     @Test
     void shouldSubmitWithIncorrectCity() {
-        SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
         form.$("[placeholder='Город']").setValue("Даллас");
         form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=name]").setValue(dataGenerator.makeName());
@@ -66,8 +68,7 @@ public class AppCardTest {
     }
 
     @Test
-    void shouldSubmitWithIncorrectDate() {
-        SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
+    void shouldGetErrorMessageIfWeSubmitSubmitWithIncorrectDate() {
         form.$("[placeholder='Город']").setValue(dataGenerator.makeCity());
         form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(1));
         form.$("[name=name]").setValue(dataGenerator.makeName());
@@ -79,8 +80,7 @@ public class AppCardTest {
     }
 
     @Test
-    void shouldSubmitWithoutName() {
-        SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
+    void shouldGetErrorMessageIfWeSubmitSubmitWithoutName() {
         form.$("[placeholder='Город']").setValue(dataGenerator.makeCity());
         form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=phone]").setValue(dataGenerator.makePhone());
@@ -91,8 +91,7 @@ public class AppCardTest {
     }
 
     @Test
-    void shouldSubmitWithIncorrectName() {
-        SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
+    void shouldGetErrorMessageIfWeSubmitSubmitWithIncorrectName() {
         form.$("[placeholder='Город']").setValue(dataGenerator.makeCity());
         form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=name]").setValue("Name Surname");
@@ -104,8 +103,7 @@ public class AppCardTest {
     }
 
     @Test
-    void shouldSubmitWithoutNumber() {
-        SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
+    void shouldGetErrorMessageIfWeSubmitSubmitWithoutNumber() {
         form.$("[placeholder='Город']").setValue(dataGenerator.makeCity());
         form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=name]").setValue(dataGenerator.makeName());
@@ -115,22 +113,8 @@ public class AppCardTest {
                 .shouldHave(exactText("Поле обязательно для заполнения"));
     }
 
-//    @Test
-//    void shouldSubmitWithIncorrectNumber() {
-//        SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
-//        form.$("[placeholder='Город']").setValue(dataGenerator.makeCity());
-//        form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardShiftDate(3));
-//        form.$("[name=name]").setValue(dataGenerator.makeName());
-//        form.$("[name=phone]").setValue("89815463321");
-//        form.$(".checkbox__box").click();
-//        $$(".button__content").find(exactText("Запланировать")).click();
-//        form.$(".input_theme_alfa-on-white.input_invalid .input__sub")
-//                .shouldHave(exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
-//    }
-
     @Test
-    void shouldSubmitWithoutCheckbox() {
-        SelenideElement form = $("form[class='form form_size_m form_theme_alfa-on-white']");
+    void shouldGetErrorMessageIfWeSubmitWithoutCheckbox() {
         form.$("[placeholder='Город']").setValue(dataGenerator.makeCity());
         form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=name]").setValue(dataGenerator.makeName());

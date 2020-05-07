@@ -1,6 +1,6 @@
 HELP.md
 .gradle
-rest/build/
+build/
 
 ### STS ###
 .apt_generated

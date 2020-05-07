@@ -1,3 +1,5 @@
+package ru.netology.delivery;
+
 import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
@@ -20,7 +22,6 @@ public class DataGenerator {
         int city = (int)Math.floor(Math.random() * myCityList.length);
         return myCityList[city];
     }
-
 
     public String makeName() {
         faker = new Faker(new Locale("ru"));
