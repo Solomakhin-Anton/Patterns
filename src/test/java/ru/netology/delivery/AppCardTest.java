@@ -45,7 +45,7 @@ public class AppCardTest {
     }
 
     @Test
-    void shouldSubmitWithIncorrectCity() {
+    void shouldGetErrorMessageIfWeSubmitWithIncorrectCity() {
         form.$("[placeholder='Город']").setValue("Даллас");
         form.$("[placeholder='Дата встречи']").doubleClick().sendKeys(dataGenerator.forwardDate(3));
         form.$("[name=name]").setValue(dataGenerator.makeName());
@@ -58,7 +58,7 @@ public class AppCardTest {
 
 
     @Test
-    void shouldSubmitRequestWithoutDate() {
+    void shouldSubmitRequestWithoutChangeOfDate() {
         $("[placeholder='Город']").setValue(dataGenerator.makeCity());
         $("[name=name]").setValue(dataGenerator.makeName());
         $("[name=phone]").setValue(dataGenerator.makePhone());
